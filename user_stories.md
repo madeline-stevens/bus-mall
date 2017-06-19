@@ -44,7 +44,8 @@ As a developer, I will make sure that the survey is suitable for all age ranges 
 ##Checklist for day 1:
 1. Create repo with appropriate files (index.html, busmall.css, reset.css, app.js, user_stories.md, image folder)
 2. Draft up 5 user stories stating what you will commit to doing as a developer for your users
-3. Compile photos in
+3. Compile photos in image folder
+4. Create a branch for day 1 html and js work 
 4. Create wireframe design
 5. Create html
 
