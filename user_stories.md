@@ -2,7 +2,7 @@
 
 #As a marketing research team member:
 #1.
-As a marketing research team member, I will make sure my purpose on why I am doing this marketing study is clear.
+As a marketing research team member, I will make sure my purpose on why I am doing this marketing study is clear. BusMall wants to feature only the items in its catalog that are the most likely to sell.
 
 #2.
 As a marketing research team member, I will make sure my directions are simple and laid out step by step.
@@ -45,7 +45,7 @@ As a developer, I will make sure that the survey is suitable for all age ranges 
 1. Create repo with appropriate files (index.html, busmall.css, reset.css, app.js, user_stories.md, image folder)
 2. Draft up 5 user stories stating what you will commit to doing as a developer for your users
 3. Compile photos in image folder
-4. Create a branch for day 1 html and js work 
+4. Create a branch for day 1 html and js work
 4. Create wireframe design
 5. Create html
 
