@@ -71,28 +71,28 @@ function handleClick(event){
   if(event.target.id === 'clickableImage') {
     alert('Make sure you click on an image!');
   }
-  if (counter > 25){
+  if (counter < 25){
     console.log('counter: ', counter);
 
     if(event.target.id === 'left'){
       counter += 1;
-      console.log('The left image has been clicked ' + allProducts[leftIndex].name + ' times');
+      console.log('The left image has been clicked ' + counter + ' times');
     }
     if(event.target.id === 'center'){
       counter += 1;
-      console.log('The center image has been clicked ' + allProducts[centerIndex].name + ' times');
+      console.log('The center image has been clicked ' + counter + ' times');
     }
     if(event.target.id === 'right'){
       counter += 1;
-      console.log('The right image has been clicked ' + allProducts[rightIndex].name + ' times');
+      console.log('The right image has been clicked ' + counter + ' times');
+    }
+    randomProducts();
 
-      randomProducts();
-
-    } else {
-      container.removeEventListener('click', handleClick);
-    };
-  }
+  } else {
+    container.removeEventListener('click', handleClick);
+  };
 }
+
 container.addEventListener('click', handleClick);
 
 // if statement saying clicks are less than 25
