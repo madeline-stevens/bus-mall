@@ -36,17 +36,20 @@ var wineglass = new testProduct('wineglass', 'images/wineglass.jpg');
 
 function randomPic1() {
   var randomNum = Math.floor(Math.random() * allProducts.length);
-  document.getElementById('img1').src = imageArray[randomNum];
+  var randomProduct = document.getElementById('img1');
+  randomProduct.src = imageArray[randomNum];
 }
 
 function randomPic2() {
   var randomNum = Math.floor(Math.random() * allProducts.length);
-  document.getElementById('img2').src = imageArray[randomNum];
+  var randomProduct = document.getElementById('img2');
+  randomProduct.src = imageArray[randomNum];
 }
 
 function randomPic3() {
   var randomNum = Math.floor(Math.random() * allProducts.length);
-  document.getElementById('img3').src = imageArray[randomNum];
+  var randomProduct = document.getElementById('img3');
+  randomProduct.src = imageArray[randomNum];
 }
 
 function allRandom () {
@@ -54,3 +57,5 @@ function allRandom () {
   randomPic2();
   randomPic3();
 }
+
+allRandom();
