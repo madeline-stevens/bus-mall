@@ -1,17 +1,19 @@
 'use strict';
+
 //array of image objects
 var allProducts = [];
 //array for randomly generated images?
 var imageArray = [];
 
-//right, left and center slots for images
-var rightIndex;
-var leftIndex;
-var centerIndex;
+//right, left and center slots for images. This is tallying
+var rightIndex = 0;
+var leftIndex = 0;
+var centerIndex = 0;
 
-var counter =
+//counting the 25 total clicks.
+var counter = 0;
 
-container.addEventListener('click', handleClick);
+var container = document.getElementById('clickableImage');
 
 //constructor function
 function testProduct(name, filepath) {
@@ -69,8 +71,29 @@ function handleClick(event){
   if(event.target.id === 'clickableImage') {
     alert('Make sure you click on an image!');
   }
+  if (counter > 25){
+    console.log('counter: ', counter);
 
+    if(event.target.id === 'left'){
+      counter += 1;
+      console.log('The left image has been clicked ' + allProducts[leftIndex].name + ' times');
+    }
+    if(event.target.id === 'center'){
+      counter += 1;
+      console.log('The center image has been clicked ' + allProducts[centerIndex].name + ' times');
+    }
+    if(event.target.id === 'right'){
+      counter += 1;
+      console.log('The right image has been clicked ' + allProducts[rightIndex].name + ' times');
+
+      randomProducts();
+
+    } else {
+      container.removeEventListener('click', handleClick);
+    };
+  }
 }
+container.addEventListener('click', handleClick);
 
 // if statement saying clicks are less than 25
 // on every click i want it to increment upon every click
