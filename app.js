@@ -9,6 +9,10 @@ var rightIndex;
 var leftIndex;
 var centerIndex;
 
+var counter =
+
+container.addEventListener('click', handleClick);
+
 //constructor function
 function testProduct(name, filepath) {
   this.name = name;
@@ -61,5 +65,14 @@ function randomProducts() {
 };
 randomProducts();
 
-//sam's code....
-// Product.left.src = Product.all[at[0, or 1..] ]
+function handleClick(event){
+  if(event.target.id === 'clickableImage') {
+    alert('Make sure you click on an image!');
+  }
+
+}
+
+// if statement saying clicks are less than 25
+// on every click i want it to increment upon every click
+// onClick increment the counter once more
+// get a console.log to confirm
