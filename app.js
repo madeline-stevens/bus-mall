@@ -38,7 +38,7 @@ var shark = new testProduct('shark', 'images/shark.jpg');
 var sweep = new testProduct('sweep', 'images/sweep.png');
 var tauntaun = new testProduct('tauntaun', 'images/tauntaun.jpg');
 var unicorn = new testProduct('unicorn', 'images/unicorn.jpg');
-var usb = new testProduct('usb', 'images/usb.jpg');
+var usb = new testProduct('usb', 'images/usb.gif');
 var watercan = new testProduct('watercan', 'images/water-can.jpg');
 var wineglass = new testProduct('wineglass', 'images/wine-glass.jpg');
 
