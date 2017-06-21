@@ -90,12 +90,8 @@ function handleClick(event){
   if(event.target.id === 'clickableImage') {
     alert('Make sure you click on an image!');
   }
-  console.log('outside of for loop');
   for(var i = 0; i < allProducts.length; i++){
-    console.log('inside for loop');
     if (event.target.alt === allProducts[i].name){
-      // counter++;
-      console.log('counter');
       allProducts[i].numberTimesClicked++;
       localStorage.setItem('data', JSON.stringify(allProducts));
     }
