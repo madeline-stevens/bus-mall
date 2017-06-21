@@ -22,7 +22,6 @@ function testProduct(name, filepath){
   this.numberTimesClicked = 0;
   allProducts.push(this);
   newImages.push(this);
-
 };
 
 //instances
@@ -122,5 +121,27 @@ function handleDisplayListResults(){
   }
   displayList();
 }
+//CHART stuff
+//Charts rendered using Chart JS v.2.6.0
+// http://www.chartjs.org/
+
+var barData = {
+  labels: allProducts,
+  datasets : [
+    	{
+    		fillColor : "#48A497",
+    		strokeColor : "#48A4D1",
+    		data : [456,479,324,569,702,600]
+    	},
+    	{
+    		fillColor : "rgba(73,188,170,0.4)",
+    		strokeColor : "rgba(72,174,209,0.4)",
+    		data : [364,504,605,400,345,320]
+    	}
+
+  ]
+}
+
+//EVENT LISTENERS
 container.addEventListener('click', handleClick);
 viewListResults.addEventListener('click', handleDisplayListResults);
