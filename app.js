@@ -2,28 +2,26 @@
 
 //array of image objects
 var allProducts = [];
-//array for randomly generated images?
-var imageArray = [];
-
-//right, left and center slots for images. This is tallying
+//array for new set of randomly generated images
+var newImages = [];
+var previousImages = [];
 var rightIndex = 0;
 var leftIndex = 0;
 var centerIndex = 0;
-
 //counting the 25 total clicks.
 var counter = 0;
-
 var container = document.getElementById('clickableImage');
 
+var viewListResults = document.getElementById('viewresults');
+
 //constructor function
-function testProduct(name, filepath) {
+function testProduct(name, filepath){
   this.name = name;
   this.filepath = filepath;
-  this.tally = 0;
-  this.clicks = 0;
+  this.numberTimesViewed = 0;
+  this.numberTimesClicked = 0;
   allProducts.push(this);
-  imageArray.push(this);
-
+  newImages.push(this);
 };
 
 //instances
@@ -48,54 +46,102 @@ var usb = new testProduct('usb', 'images/usb.gif');
 var watercan = new testProduct('watercan', 'images/water-can.jpg');
 var wineglass = new testProduct('wineglass', 'images/wine-glass.jpg');
 
-function randomProducts() {
-  function randomPics() {
-    for(var i = 0; i < 3; i++) {
-      rightIndex = Math.floor(Math.random() * allProducts.length);
-      leftIndex = Math.floor(Math.random() * allProducts.length);
-      centerIndex = Math.floor(Math.random() * allProducts.length);
-    }
-    var right = document.getElementById('right');
-    var left = document.getElementById('left');
-    var center = document.getElementById('center');
-
-    right.src = allProducts[rightIndex].filepath;
-    left.src = allProducts[leftIndex].filepath;
-    center.src = allProducts[centerIndex].filepath;
+//start of randomly generating new set of images after click
+function randomIndex(){
+  for (var i = 0; i < allProducts.length; i++) {
+    leftIndex = Math.floor(Math.random() * allProducts.length);
+    centerIndex = Math.floor(Math.random() * allProducts.length);
+    rightIndex = Math.floor(Math.random() * allProducts.length);
   }
-  randomPics();
+  newImages = [];
+  newImages.push(leftIndex, centerIndex, rightIndex);
 };
-randomProducts();
+
+function randomProducts() {
+  randomIndex();
+
+  while(leftIndex === centerIndex || leftIndex === rightIndex || centerIndex === rightIndex || newImages[0] === previousImages[0] || newImages [0] === previousImages[1] || newImages[0] === previousImages[2] || newImages[1] === previousImages[0] || newImages[1] === previousImages[1] || newImages[1] === previousImages[2] || newImages[2] === previousImages[0] || newImages[2] === previousImages[1] || newImages[2] === previousImages[2]){
+    // console.log('duplicate caught');
+    randomProducts();
+  }
+
+//setting each image slot
+  left.src = allProducts[rightIndex].filepath;
+  center.src = allProducts[leftIndex].filepath;
+  right.src = allProducts[centerIndex].filepath;
+
+  left.alt = allProducts[rightIndex].name;
+  center.alt = allProducts[leftIndex].name;
+  right.alt = allProducts[centerIndex].name;
+
+  allProducts[leftIndex].numberTimesViewed += 1;
+  allProducts[centerIndex].numberTimesViewed += 1;
+  allProducts[rightIndex].numberTimesViewed += 1;
+};
+
+function updatePreviousArray() {
+  previousImages.push(leftIndex, centerIndex, rightIndex);
+};
 
 function handleClick(event){
   if(event.target.id === 'clickableImage') {
     alert('Make sure you click on an image!');
   }
-  if (counter > 25){
-    console.log('counter: ', counter);
-
-    if(event.target.id === 'left'){
-      counter += 1;
-      console.log('The left image has been clicked ' + allProducts[leftIndex].name + ' times');
+  console.log('outside of for loop');
+  for(var i = 0; i < allProducts.length; i++){
+    console.log('inside for loop');
+    if (event.target.alt === allProducts[i].name){
+      console.log('hello');
+      allProducts[i].numberTimesClicked++;
     }
-    if(event.target.id === 'center'){
-      counter += 1;
-      console.log('The center image has been clicked ' + allProducts[centerIndex].name + ' times');
-    }
-    if(event.target.id === 'right'){
-      counter += 1;
-      console.log('The right image has been clicked ' + allProducts[rightIndex].name + ' times');
-
-      randomProducts();
-
-    } else {
-      container.removeEventListener('click', handleClick);
-    };
+  }
+  previousImages = [];
+  updatePreviousArray();
+  if (counter < 25){
+    onclick = counter++;
+    randomProducts();
+  } else {
+    container.removeEventListener('click', handleClick);
   }
 }
-container.addEventListener('click', handleClick);
+randomProducts();
 
-// if statement saying clicks are less than 25
-// on every click i want it to increment upon every click
-// onClick increment the counter once more
-// get a console.log to confirm
+function handleDisplayListResults(){
+  console.log('inside handleDisplayResults');
+  var picList = document.getElementById('pic-list');
+  function displayList() {
+    console.log('inside displayList');
+    picList.innerHTML = '';
+    for (var i = 0; i < allProducts.length; i++) {
+      var liEl = document.createElement('li');
+      liEl.textContent = allProducts[i].name + ' has been clicked ' + allProducts[i].numberTimesClicked + ' times.';
+      picList.appendChild(liEl);
+
+    }
+  }
+  displayList();
+}
+//CHART stuff
+//Charts rendered using Chart JS v.2.6.0
+// http://www.chartjs.org/
+
+var barData = {
+  labels: allProducts,
+  datasets : [
+    	{
+    		fillColor : "#48A497",
+    		strokeColor : "#48A4D1",
+    		data : [456,479,324,569,702,600]
+    	},
+    	{
+    		fillColor : "rgba(73,188,170,0.4)",
+    		strokeColor : "rgba(72,174,209,0.4)",
+    		data : [364,504,605,400,345,320]
+    	}
+
+  ]
+}
+
+//EVENT LISTENERS
+container.addEventListener('click', handleClick);
+viewListResults.addEventListener('click', handleDisplayListResults);

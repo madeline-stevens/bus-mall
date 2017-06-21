@@ -6,18 +6,39 @@
   </head>
   <body>
     <header>
+      <section id="welcome">
       <h1> Welcome! </h1>
       <h2> Instructions:</h2>
-
+      <p>
+        <ol type="1">
+          <li>Click on the product you would want to buy most.</li>
+          <li>After each click, you will see a new set of three products appear.</li>
+          <li>Keep clicking. The survey will stop after 25 clicks.</li>
+        </ol>
+      </p>
+    <p>Thank you so much for participating in this survey!</p>
+  </section>
 <section id="clickableImage">
       <img id="left" src=" "/>
       <img id="center" src=" "/>
       <img id="right" src=" "/>
 </section>
 
-<script type="text/javascript" src="app.js"></script>
-<script type="stylesheet" src="reset.css"></script>
+<button id="viewresults" type="button">Get results!</button>
 
+<ul id="pic-list"></ul>
+
+<canvas id="bar-chart" width="800px" height="400px"></canvas>
+
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" href="reset.css"></script>
+<link rel="stylesheet" href="busmall.css"></script>
+
+<!-- added for chart-->
+<script>
+  var income = document.getElementById("income").getContext("2d");
+  new Chart(income).Bar(barData);
 </script>
+
   </body>
 </html>
