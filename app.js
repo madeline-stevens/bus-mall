@@ -124,22 +124,51 @@ function handleDisplayListResults(){
 //CHART stuff
 //Charts rendered using Chart JS v.2.6.0
 // http://www.chartjs.org/
+function drawChart(){
+  var chartLabel = [];
+  var chartData = [];
+  for (var i = 0; i < allProducts.length; i++) {
+    chartData.push(allProducts[i].clicks);
+    chartLabel.push(allProducts[i].name);
+  }
 
-var barData = {
-  labels: allProducts,
-  datasets : [
-    	{
-    		fillColor : "#48A497",
-    		strokeColor : "#48A4D1",
-    		data : [456,479,324,569,702,600]
-    	},
-    	{
-    		fillColor : "rgba(73,188,170,0.4)",
-    		strokeColor : "rgba(72,174,209,0.4)",
-    		data : [364,504,605,400,345,320]
-    	}
-
-  ]
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartLabel,
+      datasets: [{
+        label: '# of clicks',
+        data: chartData,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 }
 
 //EVENT LISTENERS

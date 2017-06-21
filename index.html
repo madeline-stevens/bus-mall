@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Bus Mall</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" charset="utf-8"></script>
   </head>
   <body>
     <header>
       <section id="welcome">
-      <h1> Welcome! </h1>
+      <h1> Welcome! Product interest survey! </h1>
       <h2> Instructions:</h2>
       <p>
         <ol type="1">
@@ -24,21 +25,21 @@
       <img id="right" src=" "/>
 </section>
 
+
+<!-- added for chart-->
+<section id="myChart">
+  <canvas id="bar-chart" width="300px" height="150px"></canvas>
+</section>
+
 <button id="viewresults" type="button">Get results!</button>
 
 <ul id="pic-list"></ul>
 
-<canvas id="bar-chart" width="800px" height="400px"></canvas>
+
 
 <script type="text/javascript" src="app.js"></script>
 <link rel="stylesheet" href="reset.css"></script>
 <link rel="stylesheet" href="busmall.css"></script>
-
-<!-- added for chart-->
-<script>
-  var income = document.getElementById("income").getContext("2d");
-  new Chart(income).Bar(barData);
-</script>
 
   </body>
 </html>
