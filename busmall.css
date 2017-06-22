@@ -51,22 +51,32 @@ p {
   font-size: 25px;
   font-family: sans-serif;
   color: white;
-  padding-left: 100px;
+  padding-left: 900px;
   padding-bottom: 20px;
 }
 
 li {
   padding-left: 40px;
 }
+
 img {
   display: block-inline;
   margin: 30px;
-  padding-left: 80px;
+  padding-left: 150px;
 }
 
 #list {
   padding: 60px;
+}
 
+#pic-list {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+#chart {
+  padding-left: 80px;
+  padding-right: 20px;
 }
 
 button {
