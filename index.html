@@ -6,23 +6,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" charset="utf-8"></script>
   </head>
   <body>
-      <h1> Welcome! This is a product interest survey!</h1>
-      <h2> What kinds of products would you like to see in the next Bus Mall magazine?</h2>
-      <h2> Instructions:</h2>
+    <section>
+      <div class="full-width-background fwb-black">
+        <div class="red-box">
+          BUS<br>MALL</br>
+        </div>
+      <h2> Welcome! This is a product interest survey!<br>What kinds of products would you like to see in the next Bus Mall magazine?</br></h2>
 
-    <ol>
-      <li>Click on the product you would want to buy most.</li>
-      <li>After each click, you will see a new set of three products appear.</li>
-      <li>Keep clicking. The survey will stop after 25 clicks.</li>
-    </ol>
-
+      <div id="instructions">
+        <ol>
+          <li>Instructions:</li>
+          <li>1. Click on the product you would want to buy most.</li>
+          <li>2. After each click, you will see a new set of three products appear.</li>
+          <li>3. Keep clicking. The survey will stop after 25 clicks.</li>
+        </ol>
+      </div>
     <p>Thank you so much for participating in this survey!</p>
+</section>
 
+<div>
 <section id="clickableImage">
       <img id="left" src=" "/>
       <img id="center" src=" "/>
       <img id="right" src=" "/>
 </section>
+</div>
 
 
 <!-- added for chart-->
@@ -32,7 +40,9 @@
 
 <button id="viewresults" type="button">Get results!</button>
 
+<div id="list">
 <ul id="pic-list"></ul>
+</div>
 
 
 
