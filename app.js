@@ -28,7 +28,7 @@ function testProduct(name, filepath){
 if(localStorage.data) {
   allProducts = JSON.parse(localStorage.data);
 } else {
-//the already created instances are now nested inside the else.
+//the already created instances are now nested inside the else. DO NOT NEED THE VAR
   var bag = new testProduct('Bag', 'images/bag.jpg');
   var banana = new testProduct('Banana', 'images/banana.jpg');
   var bathroom = new testProduct('Bathroom', 'images/bathroom.jpg');
